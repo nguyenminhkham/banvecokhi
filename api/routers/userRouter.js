@@ -8,8 +8,8 @@ import { generateToken } from '../utils.js'
 const userRouter = express.Router()
 
 userRouter.get('/seed', expressAsyncHandler(async (req, res) => {
-    await User.remove({})
-    const createdUsers = await User.insertMany(data.users)
+    // await User.remove({})
+    const createdUsers = await User.find(req.body)
     res.send({createdUsers})
 }))
 
@@ -23,6 +23,7 @@ userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
                 email: user.email,
                 isAdmin: user.isAdmin,
                 token: generateToken(user),
+                money: user.money,
             })
             return
         }
@@ -36,6 +37,7 @@ userRouter.post(
         const user = new User({
             name: req.body.name,
             email: req.body.email,
+            money: 1000000,
             password: bcrypt.hashSync(req.body.password, 8),
         })
         const createdUser = await user.save()
@@ -45,6 +47,7 @@ userRouter.post(
             email: createdUser.email,
             isAdmin: createdUser.isAdmin,
             token: generateToken(createdUser),
+            money: createdUser.money,
         })
     })
 )
