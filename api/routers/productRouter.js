@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Router } from 'express'
 import Product from '../models/productModel.js'
 
 const productRouter = express.Router()
@@ -26,3 +26,13 @@ productRouter.get("/", async (req, res) => {
     }
 })
 export default productRouter
+
+//GET PRODUCT
+productRouter.get("/find/:id", async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id)
+        res.status(200).json(product)
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
