@@ -6,7 +6,7 @@
   "main": "data.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +17,8 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.0"
+    "mongoose": "^6.1.0",
+    "save-dev": "^0.0.1-security"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

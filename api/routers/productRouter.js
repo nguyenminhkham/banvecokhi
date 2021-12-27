@@ -28,11 +28,15 @@ productRouter.get("/", async (req, res) => {
 export default productRouter
 
 //GET PRODUCT
-productRouter.get("/find/:id", async (req, res) => {
+productRouter.get("/:id", async (req, res) => {
     try {
         const product = await Product.findById(req.params.id)
-        res.status(200).json(product)
-    }catch(err){
+        if (product) {
+            res.send(product)
+        } else {
+            res.status(404).send({message: 'Product not Found'})
+        }
+    } catch(err) {
         res.status(500).json(err)
     }
 })
