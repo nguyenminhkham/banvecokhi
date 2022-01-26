@@ -32,6 +32,7 @@ userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
                 isAdmin: user.isAdmin,
                 token: generateToken(user),
                 money: user.money,
+                products: user.products,
             })
             return
         }
@@ -67,9 +68,8 @@ userRouter.post('/signin_google', async (req, res) => {
                         isAdmin: user.isAdmin,
                         token: generateToken(user),
                         money: user.money,
+                        products: user.products,
                     })
-
-                
 
                 // const refresh_token = createAccessToken({id: user._id})
                 // res.cookie('refreshtoken', refresh_token, {
