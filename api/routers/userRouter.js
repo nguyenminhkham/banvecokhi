@@ -19,6 +19,7 @@ const userRouter = express.Router()
 userRouter.get('/seed', expressAsyncHandler(async (req, res) => {
     const createdUsers = await User.find(req.body)
     res.send({createdUsers})
+    // res.send(data.users)
 }))
 
 userRouter.post('/signin', expressAsyncHandler(async (req, res) => {

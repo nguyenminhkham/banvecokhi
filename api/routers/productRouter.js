@@ -65,7 +65,7 @@ productRouter.get("/", async (req, res) => {
         res.status(500).json(err)
     }
 })
-export default productRouter
+
 
 //GET PRODUCT
 // productRouter.get("/:id", async (req, res) => {
@@ -197,6 +197,8 @@ productRouter.post('/addusers', expressAsyncHandler(async (req, res) => {
                 // download: product2.download,
                 // users: product2.users,
             })
+        
+
             return
 
     } catch (err) {}
@@ -209,8 +211,8 @@ productRouter.post('/deleteusers', expressAsyncHandler(async (req, res) => {
                 $pull: {
                     users: {_id: req.body.userIdx}},
             })
-            console.log(product);
-                // res.send({product})
+            // console.log(product);
+                res.send({product})
     } catch (err) {}
 }))
 
@@ -238,3 +240,6 @@ productRouter.post('/downloads', expressAsyncHandler(async (req, res) => {
             res.status(400).json({msg: err.message})
     }
 }))
+
+
+export default productRouter
