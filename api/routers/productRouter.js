@@ -124,7 +124,6 @@ productRouter.get("/user/:id", async (req, res) => {
         })
 
         res.status(200).json(products)
-            
     } catch (err) {}
     })
 
@@ -145,9 +144,6 @@ productRouter.post('/addusers', expressAsyncHandler(async (req, res) => {
             //         res.json({response: true});
             //         }}
 
-
-            
-            
             // $addToSet: {
                 //     users: {body: req.body.userId}},
                 
@@ -197,15 +193,12 @@ productRouter.post('/addusers', expressAsyncHandler(async (req, res) => {
                 // download: product2.download,
                 // users: product2.users,
             })
-        
-
             return
 
     } catch (err) {}
 }))
 
 productRouter.post('/deleteusers', expressAsyncHandler(async (req, res) => {
-    // console.log(req.body);
     try {
             const product = await Product.findOneAndUpdate({_id: req.body.productIdx}, {
                 $pull: {
@@ -213,7 +206,8 @@ productRouter.post('/deleteusers', expressAsyncHandler(async (req, res) => {
             })
             // console.log(product);
                 res.send({product})
-    } catch (err) {}
+                // res.render('downloads')
+    } catch (err) {res.status(400).json({msg: err.message})}
 }))
 
 productRouter.post('/downloads', expressAsyncHandler(async (req, res) => {
@@ -240,6 +234,5 @@ productRouter.post('/downloads', expressAsyncHandler(async (req, res) => {
             res.status(400).json({msg: err.message})
     }
 }))
-
 
 export default productRouter
