@@ -6,7 +6,7 @@
   "main": "data.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon --inspect server.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,11 +23,15 @@
     "googleapis": "^92.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.0",
+    "multer": "^1.4.4",
+    "mysql": "^2.18.1",
     "node-fetch": "^3.1.0",
     "nodemailer": "^6.7.2",
-    "save-dev": "^0.0.1-security"
+    "save-dev": "^0.0.1-security",
+    "utf8": "^3.0.0"
   },
   "devDependencies": {
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
   }
 }
